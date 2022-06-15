@@ -1,0 +1,29 @@
+#friendmain {
+	background-color: #EDEDED;
+	display: flex;
+	justify-content: flex-start;
+}
+.mainml {
+    width: 100%;
+    /* border: 1px solid black; */
+}
+.contact{
+	height: 38px;
+	background-color: white;
+	display: flex;
+	justify-content: space-around;
+}
+.contact img {
+	width: 25px;
+	height: 25px;
+	margin-left: 12px;
+	margin-top: 4px;
+	border-radius: 20%;
+}
+.contact p{
+	width: 180px;
+	margin-left: 12px;
+	margin-top: 18px;
+	font-size: 1.5vmin;
+	border-bottom: 1px solid #EDEDED;
+}

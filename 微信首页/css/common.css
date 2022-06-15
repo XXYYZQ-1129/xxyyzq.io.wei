@@ -1,0 +1,254 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+html{
+    max-width: 540px;
+    min-width: 320px;
+    height: 100%;
+    margin: 0 auto;
+    font: normal 16px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    /* background-color: #e8e8e8; */
+    /* overflow: hidden; */
+}
+/* html,body {
+    color: #333;
+    margin: 0;
+    height: 100%;
+    font-family: "Myriad Set Pro","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+} */
+a{
+    text-decoration: none;
+    list-style: none;
+    color: #222;
+}
+
+a, label, button, input, select{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    border: 0;
+}
+
+body {
+    /* background: #fff; */
+    color: rgb(14, 14, 14);
+}
+
+
+
+a {
+    text-decoration: none;
+    
+}
+
+button {
+    outline: 0;
+}
+
+img {
+    border: 0;
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    /* color: #666; */
+}
+
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+@keyframes zoomin {
+    from {
+        transform: scale(0.5,0.5);
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    to {
+        transform: scale(1,1);
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+}
+
+@-webkit-keyframes zoomin {
+    from {
+        -webkit-transform: scale(0.5,0.5);
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    to {
+        -webkit-transform: scale(1,1);
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+}
+
+
+
+<script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript">
+
+            $(function() {
+
+                var oDropDown = $('.select');
+                var oChangeA = $('.listA');
+                oDropDown.click(function() {
+                    $(this).find('.selectList').toggle().siblings('.xl-icon').toggleClass('sq-icon');
+                });
+
+                oDropDown.mouseleave(function() {
+                    $(this).find('.selectList').hide().siblings('.xl-icon').removeClass('sq-icon');
+                });
+				
+				changeTab(1);
+				
+				// 测试
+				addSessionItem();
+				//addContactItem('飞鸟', 'robin');
+				
+				// addTalkItem('飞鸟', '18:23', '很长很长的一段文字的测试');
+				
+				
+				$('#btn1').click(function(){ changeTab(1); addSessionItem(); });
+				
+				$('#btn2').click(function()
+				{ 
+				changeTab(2); 
+				// addContactItem('飞鸟', 'robin'); 
+				
+				});
+				$('#btn3').click(function()
+				{ 
+				changeTab(3);
+				// addTalkItem('飞鸟', '18:25', '很长很长的一段文字的测试,民航局处罚“国航飞机急降”：削减航班量，吊销机长与副驾驶执照');
+				// addTalkItemMe('飞鸟', '18:25', '很长很长的一段文字的测试,民航局处罚“国航飞机急降”：削减航班量，吊销机长与副驾驶执照');
+				});
+				$('#btn4').click(function(){ changeTab(4); });
+
+            });
+			
+			// 添加一个会话条目
+			function addSessionItem()
+			{
+				$('#recentPanel').append('');
+			}
+			
+			// 添加一个通信录条目
+			function addContactItem(regname, nickname)
+			{
+			var xml = '<div href="javascript:;" class="aui-flex-list-item"><div class="aui-flex-list-image"><img src="index_data/icon-logo07.png" alt=""></div><div class="aui-flex-list-text"><h4>' + nickname + '</h4> <p class="aui-red-text">' + regname + '</p></div></div>';
+			
+				$('#contactPanel').append(xml);
+				
+				//$('#tabPage2').animate({ScrollTop:1000}, 800);
+				//alert($('contactPanel').innerHeight());
+			}
+			
+			// 添加聊天记录
+			function addTalkItem(from, tm, txt)
+			{
+				var str  = '<div class="answer">';
+	        str += '<div class="heard_img left"><img src="index_data/icon-logo07.png"/></div>';
+	        str += '<div class="answer_text"><p><a>' + tm +'</a><br>' + txt +'</p><i></i></div></div>';
+				
+				$('#chatPanel').append(str);
+			}
+			
+			function addTalkItemMe(from, tm, txt)
+			{
+				var str  = '<div class="question">';
+	        str += '<div class="heard_img right"><img src="index_data/icon-logo07.png"/></div>';
+	        str += '<div class="question_text"><p><a>' + tm +'</a><br>' + txt +'</p><i></i></div></div>';
+				
+				$('#chatPanel').append(str);
+			}
+			
+			function me_say()
+			{
+			addTalkItemMe('飞鸟', '18:25', '很长很长的一段文字的测试,民航局处罚“国航飞机急降”：削减航班量，吊销机长与副驾驶执照');
+			}
+			
+			// 切换TAB页面
+			function changeTab(index)
+			{
+				switch(index)
+				{
+					case 1:
+						$('#title').text('微信');
+						$('#tabPage1').show();
+						$('#tabPage2').hide();
+						$('#tabPage3').hide();
+						$('#tabPage4').hide();
+						$('#inputPabel').hide();
+					break;
+					
+					case 2:
+					    $('#title').text('通讯录');
+						$('#tabPage1').hide();
+						$('#tabPage2').show();
+						$('#tabPage3').hide();
+						$('#tabPage4').hide();
+						$('#inputPabel').hide();
+					break;
+					
+					case 3:
+					    $('#title').text('发现');
+						$('#tabPage1').hide();
+						$('#tabPage2').hide();
+						$('#tabPage3').show();
+						$('#tabPage4').hide();
+						$('#inputPabel').show();
+					break;
+					
+					case 4:
+					    $('#title').text('我');
+						$('#tabPage1').hide();
+						$('#tabPage2').hide();
+						$('#tabPage3').hide();
+						$('#tabPage4').show();
+						$('#inputPabel').hide();
+					break;
+				}
+				
+				
+			}
+			
+			// 根据页面设置菜单
+			function changeMenu()
+			{
+				switch(index)
+				{
+					case 1:
+					break;
+				}
+			}
+			
+        </script>
